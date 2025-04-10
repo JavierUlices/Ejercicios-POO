@@ -4,11 +4,13 @@ export class Rutina {
     private nombre: string;
     private dispositivos: Dispositivo[];
     private horario: Date;
+    private condicion: string;
 
-    constructor(nombre: string, horario: Date) {
+    constructor(nombre: string, horario: Date, condicion: string = "") {
         this.nombre = nombre;
         this.dispositivos = [];
         this.horario = horario;
+        this.condicion = condicion;
     }
 
     agregarDispositivo(dispositivo: Dispositivo): void {
@@ -16,6 +18,15 @@ export class Rutina {
     }
 
     ejecutar(): void {
+        console.log(`Ejecutando rutina: ${this.nombre}`);
         this.dispositivos.forEach(dispositivo => dispositivo.encender());
+    }
+
+    obtenerHorario(): Date {
+        return this.horario;
+    }
+
+    obtenerCondicion(): string {
+        return this.condicion;
     }
 }

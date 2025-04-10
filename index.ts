@@ -3,6 +3,7 @@ import { Termostato } from './dispositivos/Termostato';
 import { Cerradura } from './dispositivos/Cerradura';
 import { Camara } from './dispositivos/Camara';
 import { Rutina } from './rutinas/Rutinas';
+import { Escenario } from './escenarios/Escenario';
 import { Monitoreo } from './monitoreo/Monitoreo';
 import { validarDispositivo } from './validaciones/Validaciones';
 import * as readline from 'readline';
@@ -33,9 +34,18 @@ function solicitarDatos(pregunta: string): Promise<string> {
     const cerraduraPuertaPrincipal = new Cerradura(ubicacionCerradura);
     const camaraExterior = new Camara(ubicacionCamara);
 
-    const rutinaManana = new Rutina("Rutina de la Mañana", new Date());
+    // Configurar una rutina
+    const horarioRutina = new Date();
+    horarioRutina.setHours(7, 0, 0); // 7 AM
+    const rutinaManana = new Rutina("Rutina de la Mañana", horarioRutina);
     rutinaManana.agregarDispositivo(luzSala);
     rutinaManana.agregarDispositivo(termostatoHabitacion);
+
+    // Configurar un escenario
+    const escenarioNocturno = new Escenario("Modo Nocturno");
+    escenarioNocturno.agregarDispositivo(luzSala, "apagar");
+    escenarioNocturno.agregarDispositivo(termostatoHabitacion, "apagar");
+    escenarioNocturno.agregarDispositivo(cerraduraPuertaPrincipal, "encender");
 
     const monitoreo = new Monitoreo();
     monitoreo.agregarDispositivo(luzSala);
@@ -45,7 +55,17 @@ function solicitarDatos(pregunta: string): Promise<string> {
 
     try {
         validarDispositivo(luzSala);
+
+        // Ejecutar rutina
         rutinaManana.ejecutar();
+
+        // Aplicar escenario
+        escenarioNocturno.aplicar();
+
+        // Monitorear en tiempo real
+        monitoreo.monitorearEnTiempoReal();
+
+        // Generar informe de consumo energético
         monitoreo.generarInforme();
     } catch (error) {
         console.error(error.message);

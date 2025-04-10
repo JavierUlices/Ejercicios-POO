@@ -41,6 +41,7 @@ var Termostato_1 = require("./dispositivos/Termostato");
 var Cerradura_1 = require("./dispositivos/Cerradura");
 var Camara_1 = require("./dispositivos/Camara");
 var Rutinas_1 = require("./rutinas/Rutinas");
+var Escenario_1 = require("./escenarios/Escenario");
 var Monitoreo_1 = require("./monitoreo/Monitoreo");
 var Validaciones_1 = require("./validaciones/Validaciones");
 var readline = require("readline");
@@ -57,7 +58,7 @@ function solicitarDatos(pregunta) {
     });
 }
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var ubicacionLuz, ubicacionTermostato, ubicacionCerradura, ubicacionCamara, luzSala, termostatoHabitacion, cerraduraPuertaPrincipal, camaraExterior, rutinaManana, monitoreo;
+    var ubicacionLuz, ubicacionTermostato, ubicacionCerradura, ubicacionCamara, luzSala, termostatoHabitacion, cerraduraPuertaPrincipal, camaraExterior, horarioRutina, rutinaManana, escenarioNocturno, monitoreo;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, solicitarDatos('Ingrese la ubicación de la luz: ')];
@@ -76,9 +77,15 @@ function solicitarDatos(pregunta) {
                 termostatoHabitacion = new Termostato_1.Termostato(ubicacionTermostato);
                 cerraduraPuertaPrincipal = new Cerradura_1.Cerradura(ubicacionCerradura);
                 camaraExterior = new Camara_1.Camara(ubicacionCamara);
-                rutinaManana = new Rutinas_1.Rutina("Rutina de la Mañana", new Date());
+                horarioRutina = new Date();
+                horarioRutina.setHours(7, 0, 0); // 7 AM
+                rutinaManana = new Rutinas_1.Rutina("Rutina de la Mañana", horarioRutina);
                 rutinaManana.agregarDispositivo(luzSala);
                 rutinaManana.agregarDispositivo(termostatoHabitacion);
+                escenarioNocturno = new Escenario_1.Escenario("Modo Nocturno");
+                escenarioNocturno.agregarDispositivo(luzSala, "apagar");
+                escenarioNocturno.agregarDispositivo(termostatoHabitacion, "apagar");
+                escenarioNocturno.agregarDispositivo(cerraduraPuertaPrincipal, "encender");
                 monitoreo = new Monitoreo_1.Monitoreo();
                 monitoreo.agregarDispositivo(luzSala);
                 monitoreo.agregarDispositivo(termostatoHabitacion);
@@ -86,7 +93,13 @@ function solicitarDatos(pregunta) {
                 monitoreo.agregarDispositivo(camaraExterior);
                 try {
                     (0, Validaciones_1.validarDispositivo)(luzSala);
+                    // Ejecutar rutina
                     rutinaManana.ejecutar();
+                    // Aplicar escenario
+                    escenarioNocturno.aplicar();
+                    // Monitorear en tiempo real
+                    monitoreo.monitorearEnTiempoReal();
+                    // Generar informe de consumo energético
                     monitoreo.generarInforme();
                 }
                 catch (error) {
