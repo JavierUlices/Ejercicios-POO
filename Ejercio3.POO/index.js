@@ -36,14 +36,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Luz_1 = require("./dispositivos/Luz");
-var Termostato_1 = require("./dispositivos/Termostato");
-var Cerradura_1 = require("./dispositivos/Cerradura");
-var Camara_1 = require("./dispositivos/Camara");
-var Rutinas_1 = require("./rutinas/Rutinas");
-var Escenario_1 = require("./escenarios/Escenario");
-var Monitoreo_1 = require("./monitoreo/Monitoreo");
-var Validaciones_1 = require("./validaciones/Validaciones");
+var Luz_1 = require("../Ejercio3.POO/Luz");
+var Termostato_1 = require("../Ejercio3.POO/Termostato");
+var Cerradura_1 = require("../Ejercio3.POO/Cerradura");
+var Camara_1 = require("../Ejercio3.POO/Camara");
+var Rutinas_1 = require("../Ejercio3.POO/Rutinas");
+var Escenario_1 = require("../escenario/Escenario");
+var Monitoreo_1 = require("../Ejercio3.POO/Monitoreo");
+var Validaciones_1 = require("../Ejercio3.POO/Validaciones");
 var readline = require("readline");
 var rl = readline.createInterface({
     input: process.stdin,

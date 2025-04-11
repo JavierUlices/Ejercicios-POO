@@ -1,11 +1,11 @@
-import { Luz } from './dispositivos/Luz';
-import { Termostato } from './dispositivos/Termostato';
-import { Cerradura } from './dispositivos/Cerradura';
-import { Camara } from './dispositivos/Camara';
-import { Rutina } from './rutinas/Rutinas';
-import { Escenario } from './escenarios/Escenario';
-import { Monitoreo } from './monitoreo/Monitoreo';
-import { validarDispositivo } from './validaciones/Validaciones';
+import { Luz } from '../Ejercio3.POO/Luz';
+import { Termostato } from '../Ejercio3.POO/Termostato';
+import { Cerradura } from '../Ejercio3.POO/Cerradura';
+import { Camara } from '../Ejercio3.POO/Camara'
+import { Rutina } from '../Ejercio3.POO/Rutinas';
+import { Escenario } from '../escenario/Escenario'
+import { Monitoreo } from '../Ejercio3.POO/Monitoreo';
+import { validarDispositivo } from '../Ejercio3.POO/Validaciones'
 import * as readline from 'readline';
 
 const rl = readline.createInterface({
