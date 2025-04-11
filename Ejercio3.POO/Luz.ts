@@ -13,7 +13,7 @@ export class Luz implements Dispositivo {
 
     encender(): void {
         this.estado = true;
-        this.consumoEnergetico = 10; // Consumo en Watts
+        this.consumoEnergetico = 10;  
     }
 
     apagar(): void {

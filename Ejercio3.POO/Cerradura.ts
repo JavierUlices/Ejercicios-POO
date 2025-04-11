@@ -13,7 +13,7 @@ export class Cerradura implements Dispositivo {
 
     encender(): void {
         this.estado = true;
-        this.consumoEnergetico = 5; // Consumo en Watts
+        this.consumoEnergetico = 5;  
     }
 
     apagar(): void {

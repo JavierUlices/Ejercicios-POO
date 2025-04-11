@@ -2,7 +2,7 @@ import { Dispositivo } from '../interfaces/Dispositivo';
 
 export class Escenario {
     private nombre: string;
-    private dispositivos: Map<Dispositivo, string>; // Mapa de dispositivos y acciones ("encender" o "apagar")
+    private dispositivos: Map<Dispositivo, string>;  
 
     constructor(nombre: string) {
         this.nombre = nombre;

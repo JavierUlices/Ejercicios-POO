@@ -6,11 +6,11 @@ var Termostato = /** @class */ (function () {
         this.estado = false;
         this.consumoEnergetico = 0;
         this.ubicacion = ubicacion;
-        this.temperatura = 22; // Temperatura predeterminada en grados Celsius
+        this.temperatura = 22;
     }
     Termostato.prototype.encender = function () {
         this.estado = true;
-        this.consumoEnergetico = 50; // Consumo en Watts
+        this.consumoEnergetico = 50;
     };
     Termostato.prototype.apagar = function () {
         this.estado = false;

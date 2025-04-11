@@ -10,12 +10,12 @@ export class Termostato implements Dispositivo {
         this.estado = false;
         this.consumoEnergetico = 0;
         this.ubicacion = ubicacion;
-        this.temperatura = 22; // Temperatura predeterminada en grados Celsius
+        this.temperatura = 22;  
     }
 
     encender(): void {
         this.estado = true;
-        this.consumoEnergetico = 50; // Consumo en Watts
+        this.consumoEnergetico = 50;  
     }
 
     apagar(): void {

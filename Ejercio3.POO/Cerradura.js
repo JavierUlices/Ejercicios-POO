@@ -9,7 +9,7 @@ var Cerradura = /** @class */ (function () {
     }
     Cerradura.prototype.encender = function () {
         this.estado = true;
-        this.consumoEnergetico = 5; // Consumo en Watts
+        this.consumoEnergetico = 5;
     };
     Cerradura.prototype.apagar = function () {
         this.estado = false;

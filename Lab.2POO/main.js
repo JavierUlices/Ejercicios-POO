@@ -44,7 +44,6 @@ var EcosystemCLI = /** @class */ (function () {
     function EcosystemCLI() {
         this.ecosystem = new organismos_1.EcosystemService();
     }
-    // Método para iniciar la interacción en consola
     EcosystemCLI.prototype.start = function () {
         return __awaiter(this, void 0, void 0, function () {
             var continueAdding, name_1, lifespan, _a, reproductionRate, _b, foodNeeds, _c, type, organism, addMore;

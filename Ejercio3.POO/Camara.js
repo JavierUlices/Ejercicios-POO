@@ -9,7 +9,7 @@ var Camara = /** @class */ (function () {
     }
     Camara.prototype.encender = function () {
         this.estado = true;
-        this.consumoEnergetico = 15; // Consumo en Watts
+        this.consumoEnergetico = 15;
     };
     Camara.prototype.apagar = function () {
         this.estado = false;

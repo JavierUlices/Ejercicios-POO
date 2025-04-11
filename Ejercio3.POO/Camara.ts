@@ -13,7 +13,7 @@ export class Camara implements Dispositivo {
 
     encender(): void {
         this.estado = true;
-        this.consumoEnergetico = 15; // Consumo en Watts
+        this.consumoEnergetico = 15; 
     }
 
     apagar(): void {

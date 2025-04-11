@@ -9,7 +9,7 @@ var Luz = /** @class */ (function () {
     }
     Luz.prototype.encender = function () {
         this.estado = true;
-        this.consumoEnergetico = 10; // Consumo en Watts
+        this.consumoEnergetico = 10;
     };
     Luz.prototype.apagar = function () {
         this.estado = false;

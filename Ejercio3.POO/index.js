@@ -49,7 +49,7 @@ var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-// Función para solicitar datos al usuario
+// funcones para mostrar los datos del usuario
 function solicitarDatos(pregunta) {
     return new Promise(function (resolve) {
         rl.question(pregunta, function (respuesta) {
@@ -78,7 +78,7 @@ function solicitarDatos(pregunta) {
                 cerraduraPuertaPrincipal = new Cerradura_1.Cerradura(ubicacionCerradura);
                 camaraExterior = new Camara_1.Camara(ubicacionCamara);
                 horarioRutina = new Date();
-                horarioRutina.setHours(7, 0, 0); // 7 AM
+                horarioRutina.setHours(7, 0, 0);
                 rutinaManana = new Rutinas_1.Rutina("Rutina de la Mañana", horarioRutina);
                 rutinaManana.agregarDispositivo(luzSala);
                 rutinaManana.agregarDispositivo(termostatoHabitacion);
@@ -93,13 +93,9 @@ function solicitarDatos(pregunta) {
                 monitoreo.agregarDispositivo(camaraExterior);
                 try {
                     (0, Validaciones_1.validarDispositivo)(luzSala);
-                    // Ejecutar rutina
                     rutinaManana.ejecutar();
-                    // Aplicar escenario
                     escenarioNocturno.aplicar();
-                    // Monitorear en tiempo real
                     monitoreo.monitorearEnTiempoReal();
-                    // Generar informe de consumo energético
                     monitoreo.generarInforme();
                 }
                 catch (error) {
